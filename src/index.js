@@ -18,5 +18,7 @@ class WidgetChatbot extends React.Component {
   }
 }
 
-// Ekspor modul
+// Attach ke window secara manual
+window.WidgetChatbot = WidgetChatbot;
+
 export default WidgetChatbot;
