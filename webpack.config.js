@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -6,7 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'widget-client.js',
     library: 'WidgetChatbot',
-    libraryTarget: 'window',
+    libraryTarget: 'window', // Ekspor ke global scope sebagai window.WidgetChatbot
   },
   module: {
     rules: [
@@ -15,6 +16,20 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'swc-loader',
+          options: {
+            jsc: {
+              parser: {
+                syntax: 'ecmascript',
+                jsx: true,
+                tsx: true,
+              },
+              transform: {
+                react: {
+                  runtime: 'automatic',
+                },
+              },
+            },
+          },
         },
       },
       {
@@ -79,4 +94,10 @@ module.exports = {
     react: 'React',
     'react-dom': 'ReactDOM',
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'), // atau 'development'
+      'process.browser': 'true', // Menyediakan check untuk browser
+    }),
+  ],
 };
