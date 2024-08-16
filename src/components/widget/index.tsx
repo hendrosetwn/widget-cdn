@@ -581,7 +581,7 @@ export default function WidgetChatbot({ tenantId }: Readonly<Props>) {
   };
 
   return (
-    <section className={`z-50`}>
+    <section className={`z-50`} id='chat-widget-container'>
       {isOpen ? (
         <div className='w-[400px] widget-shadow'>
           {section == 'login' ? (

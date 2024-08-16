@@ -5,8 +5,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'widget-client.js',
-    library: 'WidgetClient',
-    libraryTarget: 'umd',
+    library: 'WidgetChatbot',
+    libraryTarget: 'window',
   },
   module: {
     rules: [
@@ -41,7 +41,7 @@ module.exports = {
                 enabled: true,
               },
               pngquant: {
-                quality: [0.65, 0.90],
+                quality: [0.65, 0.9],
                 speed: 4,
               },
               gifsicle: {
