@@ -85,8 +85,9 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'), // atau 'development'
-      'process.browser': 'true', // Menyediakan check untuk browser
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.browser': 'true',
+      process: JSON.stringify({}),
     }),
   ],
 };
