@@ -2,12 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import WidgetClient from './components/widget';
 
-interface WidgetChatbotProps {
-  tenantId: string;
-}
-
-class WidgetChatbot extends React.Component<WidgetChatbotProps> {
-  static init({ tenantId, container }: { tenantId: string; container: string }) {
+class WidgetChatbot extends React.Component {
+  static init({ tenantId, container }) {
     const rootElement = document.getElementById(container);
     if (!rootElement) {
       console.error('Element not found');
@@ -24,6 +20,6 @@ class WidgetChatbot extends React.Component<WidgetChatbotProps> {
 }
 
 // Attach to the window object manually
-(window as any).WidgetChatbot = WidgetChatbot;
+window.WidgetChatbot = WidgetChatbot;
 
 export default WidgetChatbot;

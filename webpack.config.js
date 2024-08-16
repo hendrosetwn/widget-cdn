@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'widget-client.js',
@@ -15,9 +15,20 @@ module.exports = {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: 'swc-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+            jsc: {
+              parser: {
+                syntax: 'ecmascript',
+                jsx: true,
+                tsx: true,
+              },
+              transform: {
+                react: {
+                  runtime: 'automatic',
+                },
+              },
+            },
           },
         },
       },
@@ -85,9 +96,8 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
-      'process.browser': 'true',
-      process: JSON.stringify({}),
+      'process.env.NODE_ENV': JSON.stringify('production'), // atau 'development'
+      'process.browser': 'true', // Menyediakan check untuk browser
     }),
   ],
 };
