@@ -7,7 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'widget-client.js',
     library: 'WidgetChatbot',
-    libraryTarget: 'umd',
+    libraryTarget: 'window',
   },
   module: {
     rules: [

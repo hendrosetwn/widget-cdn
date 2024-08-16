@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 4000",
-    "build": "webpack --mode production",
+    "build": "next build",
+    "webpack": "webpack --mode production",
     "start": "next start",
     "lint": "next lint"
   },
