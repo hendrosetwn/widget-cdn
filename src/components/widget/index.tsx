@@ -36,9 +36,9 @@ import CardGridWidget from '../atoms/CardGridWidget';
 import { IResponseContinueConversation, IResponseCreateConversation } from '@interfaces/covnersation';
 import icons from '@assets/icons';
 
-interface Props {
+type Props = {
   tenantId: string;
-}
+};
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Must Filled !'),
@@ -47,7 +47,7 @@ const validationSchema = Yup.object().shape({
   chat: Yup.string(),
 });
 
-export default function WidgetChatbot({ tenantId }: Readonly<Props>) {
+export default function WidgetClient({ tenantId }: Props) {
   const [stompClient, setStompClient] = useState<Client | undefined>(undefined);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);

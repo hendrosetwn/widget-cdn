@@ -1,9 +1,9 @@
-import WidgetChatbot from '@components/widget';
+import WidgetClient from '@components/widget';
 
 export default function TenantWidgetPage({ params }: { params: { id: string } }) {
   if (!params.id) {
     return <p>Loading...</p>;
   }
 
-  return <WidgetChatbot tenantId={params.id as string} />;
+  return <WidgetClient tenantId={params.id as string} />;
 }

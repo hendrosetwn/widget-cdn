@@ -1,8 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import WidgetClient from './components/widget';
 
-class WidgetChatbot extends React.Component {
-  static init({ tenantId, container }) {
+// Definisikan tipe untuk props di WidgetChatbot
+interface WidgetChatbotProps {
+  tenantId: string;
+}
+
+class WidgetChatbot extends React.Component<WidgetChatbotProps> {
+  static init({ tenantId, container }: { tenantId: string; container: string }) {
     const rootElement = document.getElementById(container);
     if (!rootElement) {
       console.error('Element not found');
@@ -10,7 +16,7 @@ class WidgetChatbot extends React.Component {
     }
 
     const root = ReactDOM.createRoot(rootElement);
-    root.render(<WidgetChatbot tenantId={tenantId} />);
+    root.render(<WidgetClient tenantId={tenantId} />);
   }
 
   render() {
@@ -19,6 +25,12 @@ class WidgetChatbot extends React.Component {
 }
 
 // Attach ke window secara manual
+declare global {
+  interface Window {
+    WidgetChatbot: typeof WidgetChatbot;
+  }
+}
+
 window.WidgetChatbot = WidgetChatbot;
 
 export default WidgetChatbot;
