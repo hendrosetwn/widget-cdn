@@ -7,7 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'widget-client.js',
     library: 'WidgetChatbot',
-    libraryTarget: 'window', // Ekspor ke global scope sebagai window.WidgetChatbot
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
